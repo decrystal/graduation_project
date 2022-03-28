@@ -1,0 +1,9 @@
+* {
+
+}
+
+@mixin boxBackground {
+    background-image: url('/src/assets/images/box.png');
+    background-attachment:scroll;
+    background-size: 100% 100%;
+}
