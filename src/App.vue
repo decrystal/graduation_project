@@ -7,8 +7,8 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
-  <Header></Header>
-  <Layout></Layout>
+  <Header v-show="$route.meta.showHeader"></Header>
+  <router-view></router-view>
 </template>
 
 <script lang='ts'>
