@@ -247,7 +247,7 @@
 
         & > p {
             font-family: AdobeHeitiStd-Regular;
-            font-size: 22px;;
+            font-size: 22px;
             font-weight: normal;
             font-stretch: normal;
             line-height: 20px;
@@ -307,6 +307,7 @@
         & > button {
 
         }
+
         & > .row_second_item {
             padding: 67px 56px;
             margin: 15px;
@@ -320,6 +321,10 @@
                 flex-basis: 25%;
                 max-width: 25%;
                 
+            }
+            & > div:nth-of-type(1) {
+                font-size: 0.2rem;
+                text-align: center;
             }
             & > div:nth-of-type(3), div:nth-of-type(4) {
                 text-align: center;

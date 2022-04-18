@@ -1,40 +1,36 @@
-import AppMain  from '@/layout/components/AppMain.vue';
-import Layout from '@/layout/index.vue'
-import {createRouter, createWebHistory,RouteLocationRaw,RouteRecordRaw} from 'vue-router'
+import { basicRoutes } from './routes';
 
-const history = createWebHistory()
-const routes:Array<RouteRecordRaw>  = [
-    {
-        path:'/home',
-        name:'home',
-        component:() => import('../app.vue')
-    },
-    {
-        path:'/layout',
-        name:'layout',
-        component: AppMain,
-        // children: [
-        //     {
-        //         name:'test',
-        //         path: '/test',
-        //         component: () =>
-        //         import(/* webpackChunkName: "layout" */ "./test.vue"),
-        //     }
-        // ]
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: () => import('../layout/pages/Login.vue'),
-        meta:{
-            showHeader:false
-        }
-    }
-]
+import {
+  createRouter,
+  createWebHistory,
+  RouteLocationRaw,
+  RouteRecordRaw,
+} from 'vue-router';
 
+const history = createWebHistory();
+// 白名单应该包含基本静态路由
+const WHITE_NAME_LIST: string[] = [];
+const getRouteNames = (array: any[]) =>
+  array.forEach((item) => {
+    WHITE_NAME_LIST.push(item.name);
+    getRouteNames(item.children || []);
+  });
+getRouteNames(basicRoutes);
+
+//app-router
 const router = createRouter({
-    history,
-    routes
-})
+  history,
+  routes: basicRoutes,
+});
+
+// reset router
+export function resetRouter() {
+  router.getRoutes().forEach((route) => {
+    const { name } = route;
+    if (name && !WHITE_NAME_LIST.includes(name as string)) {
+      router.hasRoute(name) && router.removeRoute(name);
+    }
+  });
+}
 
 export default router;

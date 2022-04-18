@@ -1,9 +1,28 @@
 * {
-
 }
 
 @mixin boxBackground {
-    background-image: url('/src/assets/images/box.png');
-    background-attachment:scroll;
-    background-size: 100% 100%;
+  background-image: url('/src/assets/images/box.png');
+  background-attachment: scroll;
+  background-size: 100% 100%;
+}
+
+@mixin selectedRound {
+  background-image: url('/src/assets/images/selectedRound.png');
+  background-attachment: scroll;
+  background-size: 100% 100%;
+}
+#app {
+  ::v-deep .productListSelect {
+    & ::v-deep .el-select-dropdown__list {
+      background-color: red !important;
+    }
+    & ::v-deep .selected {
+      background-color: yellow !important;
+    }
+  }
+}
+
+::v-deep .el-select-dropdown__list {
+  background-color: red !important;
 }

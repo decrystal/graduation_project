@@ -1,24 +1,22 @@
 
 <template>
-    <div class="appMain">
-       <Product></Product>
-       <router-view></router-view>
-    </div>
+  <div class="appMain">
+    <router-view />
+  </div>
 </template>
 <script lang='ts'>
-import VaIconMenuCollapsed from '@/components/icons/VaIconMenuCollapsed.vue'
-import Product from '@/layout/pages/Product.vue'
-import {ref,computed,defineComponent } from 'vue'
+import Product from "@/layout/pages/Product.vue";
+
+import ProductList from "../pages/ProductList.vue";
+import { ref, computed, defineComponent } from "vue";
 
 export default defineComponent({
-    name:'AppMain',
-    components: {Product}
-   
-})
-
+  name: "AppMain",
+  components: { Product, ProductList },
+});
 </script>
 <style lang="scss" scoped>
-    .appMain {
-        height: calc(100% - 40px);
-    }
+.appMain {
+  height: calc(100% - 0.15rem);
+}
 </style>

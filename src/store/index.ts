@@ -1,13 +1,9 @@
-import {createStore} from 'vuex'
+import type { App } from 'vue'
+import { createPinia } from 'pinia'
 
-export default createStore({
-    strict:true,
-    state: {
-        isSiderBarMinized:false,
-    },
-    mutations: {
-        updateSidebarCollapsedState(state,value) {
-            state.isSiderBarMinized = value;
-        }
-    }
-})
+const store = createPinia()
+
+export function setupStore(app: App<Element>) {
+  app.use(store)
+}
+export { store }
